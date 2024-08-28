@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.table td, .table th {
+    text-transform: capitalize;
+}
