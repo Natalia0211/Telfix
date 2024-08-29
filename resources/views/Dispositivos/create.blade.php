@@ -58,11 +58,14 @@
             @enderror
         </div>
 
-        <!-- Botón de Enviar -->
+        <!-- Botones de Acción -->
         <div class="flex items-center justify-end mt-6">
+            <a href="{{ route('dispositivos.index') }}" class="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 mr-4">
+                Cancelar
+            </a>
             <button type="submit" 
                     class="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                Crear Dispositivo
+                Guardar
             </button>
         </div>
     </form>

@@ -12,7 +12,7 @@ class Cliente extends Model
     protected $fillable = ['nombre', 'apellidos', 'telefono', 'correo_electronico'];
 
     // Definir la relación con el modelo Dispositivo
-    public function dispositivo()
+    public function dispositivos()
     {
         return $this->hasMany(Dispositivo::class,'cliente_id');  // Un cliente puede terner muchos dispositivos
 }

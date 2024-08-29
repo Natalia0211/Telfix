@@ -12,7 +12,7 @@
             <table class="table table-zebra">
               <thead>
                 <tr>
-                  <th>id</th> 
+                  <th>id</th>
                   <th>marca</th>
                   <th>modelo</th>
                   <th>imei</th>
@@ -27,7 +27,13 @@
                         <td>{{ $dispositivo->marca }}</td>
                         <td>{{ $dispositivo->modelo }}</td>
                         <td>{{ $dispositivo->imei }}</td>
-                        <td>{{ $dispositivo->cliente->nombre }} {{ $dispositivo->cliente->apellidos }}</td>
+                        <td>
+                            @if($dispositivo->cliente)
+                                {{ $dispositivo->cliente->nombre }} {{ $dispositivo->cliente->apellidos }}
+                            @else
+                                <span class="text-red-500">Cliente no disponible</span>
+                            @endif
+                        </td>
                         <td class="flex space-x-2">
                             <a href="{{ route('dispositivos.edit', $dispositivo->id) }}" class="btn btn-warning btn-xs">Editar</a>
                             <form action="{{ route('dispositivos.destroy', $dispositivo->id) }}" method="POST">

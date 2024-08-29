@@ -14,7 +14,7 @@ class DispositivoController extends Controller
     public function index()
     {
         // Obtener todos los dispositivos ordenados por marca
-        $dispositivos = Dispositivo::orderBy('marca')->get();
+        $dispositivos = Dispositivo::orderBy('id')->get();
         return view('dispositivos.index', ['dispositivos' => $dispositivos]);
     }
 
