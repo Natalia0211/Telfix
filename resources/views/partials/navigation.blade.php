@@ -10,6 +10,7 @@
       <ul class="menu menu-horizontal px-1 mr-6 space-x-2">
         <li><a href="{{ route('clientes.index') }}">Clientes</a></li>
         <li><a href="{{ route('dispositivos.index') }}">Dispositivos</a></li>
+        <li><a href="{{ route('solicitudes.index') }}">Solicitudes</a></li>
       </ul>
     </div>
   </div>
