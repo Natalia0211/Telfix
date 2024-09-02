@@ -1,69 +1,64 @@
 @extends('layouts.app')
 
 @section('titulo', 'Crear Solicitud')
-@section('cabecera', 'Crear Nueva Solicitud')
 
 @section('contenido')
 <div class="container mx-auto p-4">
-    <!-- Formulario de Crear Solicitud -->
-    <div class="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-md">
-        <h2 class="text-2xl font-semibold mb-4">Crear Nueva Solicitud</h2>
-
-        <form action="{{ route('solicitudes.store') }}" method="POST">
-            @csrf
-
-            <!-- Selección de Cliente -->
-            <div class="mb-4">
-                <label for="id_cliente" class="block text-sm font-medium text-gray-700">Cliente</label>
-                <select id="id_cliente" name="id_cliente" class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+    <h1 class="text-2xl font-bold mb-6">Agregar Nueva Solicitud</h1>
+    <form action="{{ route('solicitudes.store') }}" method="POST">
+        @csrf
+        <div class="grid gap-6 mb-6 md:grid-cols-2">
+            <div>
+                <label for="cliente_id" class="block text-sm font-medium text-gray-700">Cliente</label>
+                <select id="cliente_id" name="cliente_id" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50" required>
                     <option value="">Seleccione un cliente</option>
-                    @foreach($clientes as $cliente)
+                    @foreach ($clientes as $cliente)
                         <option value="{{ $cliente->id }}">{{ $cliente->nombre }} {{ $cliente->apellidos }}</option>
                     @endforeach
                 </select>
-                @error('id_cliente')
-                    <p class="text-red-500 text-xs italic mt-1">{{ $message }}</p>
+                @error('cliente_id')
+                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                 @enderror
             </div>
 
-            <!-- Selección de Dispositivo -->
-            <div class="mb-4">
-                <label for="id_dispositivo" class="block text-sm font-medium text-gray-700">Dispositivo</label>
-                <select id="id_dispositivo" name="id_dispositivo" class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            <div>
+                <label for="dispositivo_id" class="block text-sm font-medium text-gray-700">Dispositivo</label>
+                <select id="dispositivo_id" name="dispositivo_id" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50" required>
                     <option value="">Seleccione un dispositivo</option>
-                    @foreach($dispositivos as $dispositivo)
+                    @foreach ($dispositivos as $dispositivo)
                         <option value="{{ $dispositivo->id }}">{{ $dispositivo->marca }} {{ $dispositivo->modelo }}</option>
                     @endforeach
                 </select>
-                @error('id_dispositivo')
-                    <p class="text-red-500 text-xs italic mt-1">{{ $message }}</p>
+                @error('dispositivo_id')
+                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                 @enderror
             </div>
 
-            <!-- Fecha de Solicitud -->
-            <div class="mb-4">
+            <div>
                 <label for="fecha_solicitud" class="block text-sm font-medium text-gray-700">Fecha de Solicitud</label>
-                <input type="datetime-local" id="fecha_solicitud" name="fecha_solicitud" class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                <input type="datetime-local" id="fecha_solicitud" name="fecha_solicitud" value="{{ old('fecha_solicitud') }}" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50" required>
                 @error('fecha_solicitud')
-                    <p class="text-red-500 text-xs italic mt-1">{{ $message }}</p>
+                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                 @enderror
             </div>
 
-            <!-- Descripción del Problema -->
-            <div class="mb-4">
+            <div>
                 <label for="descripcion_problema" class="block text-sm font-medium text-gray-700">Descripción del Problema</label>
-                <textarea id="descripcion_problema" name="descripcion_problema" rows="4" class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
+                <textarea id="descripcion_problema" name="descripcion_problema" rows="4" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50" required>{{ old('descripcion_problema') }}</textarea>
                 @error('descripcion_problema')
-                    <p class="text-red-500 text-xs italic mt-1">{{ $message }}</p>
+                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                 @enderror
             </div>
+        </div>
 
-            <!-- Botones de Enviar y Cancelar -->
-            <div class="flex justify-end space-x-4">
-                <a href="{{ route('solicitudes.index') }}" class="btn btn-outline btn-sm">Cancelar</a>
-                <button type="submit" class="btn btn-primary btn-sm">Guardar Solicitud</button>
-            </div>
-        </form>
-    </div>
+        <div class="flex justify-end">
+            <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                Guardar
+            </button>
+            <a href="{{ route('solicitudes.index') }}" class="ml-4 inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-gray-700 bg-gray-200 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
+                Cancelar
+            </a>
+        </div>
+    </form>
 </div>
 @endsection

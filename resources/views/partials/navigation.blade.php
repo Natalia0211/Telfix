@@ -11,6 +11,8 @@
         <li><a href="{{ route('clientes.index') }}">Clientes</a></li>
         <li><a href="{{ route('dispositivos.index') }}">Dispositivos</a></li>
         <li><a href="{{ route('solicitudes.index') }}">Solicitudes</a></li>
+        <li><a href="{{ route('reparaciones.index') }}">Reparaciones</a></li>
+        <li><a href="{{ route('empleados.index') }}">Empleados</a></li>
       </ul>
     </div>
   </div>

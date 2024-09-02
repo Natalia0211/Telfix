@@ -5,6 +5,12 @@ use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\DispositivoController;
 use App\Http\Controllers\SolicitudController;
 use App\Http\Controllers\AutenticaController;
+use App\Http\Controllers\EmpleadoController;
+use App\Http\Controllers\FacturaController;
+use App\Http\Controllers\InventarioController;
+use App\Http\Controllers\PagoController;
+use App\Http\Controllers\ProveedorController;
+use App\Http\Controllers\ReparacionController;
 
 
 /*
@@ -23,6 +29,13 @@ Route::view('/', 'welcome')->name('inicio');
 Route::resource('/clientes',ClienteController::class);  
 Route::resource('/dispositivos',DispositivoController::class); 
 Route::resource('/solicitudes', SolicitudController::class);
+Route::resource('/reparaciones', ReparacionController::class);
+Route::resource('/empleados', EmpleadoController::class);
+Route::resource('/inventario', InventarioController::class);
+Route::resource('/proveedores', ProveedorController::class);
+Route::resource('/facturas', FacturaController::class);
+Route::resource('/pagos', PagoController::class);
+
 
 //Ruta de registro de usuarios
 Route::view('/registro', 'autenticacion.registro')->name('registro');
